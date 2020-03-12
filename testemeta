@@ -110,6 +110,14 @@ oject xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/200
    System.out.println("Response Body is =>  " + response.asString());
  }
 
+
+public void GetWeatherDetails()
+	{
+		
+		RestAssured.baseURI = "https://api.interzoid.com/getweather?&city=RoundRock&state=TX";
+		System.out.println("Response Body is =>  " + response.asString());
+	}
+
 @Test
  public void GetWeatherDetails()
  {
