@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>api.interzoid.com</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.jdt.core.javabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>org.eclipse.m2e.core.maven2Builder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.jdt.core.javanature</nature>
+		<nature>org.eclipse.m2e.core.maven2Nature</nature>
+	</natures>
+</projectDescription>
+
+eclipse.preferences.version=1
+encoding//src/main/java=UTF-8
+encoding//src/test/java=UTF-8
+encoding/<project>=UTF-8
+
+eclipse.preferences.version=1
+org.eclipse.jdt.core.compiler.codegen.targetPlatform=1.5
+org.eclipse.jdt.core.compiler.compliance=1.5
+org.eclipse.jdt.core.compiler.problem.forbiddenReference=warning
+org.eclipse.jdt.core.compiler.source=1.5
+
+activeProfiles=
+eclipse.preferences.version=1
+resolveWorkspaceProjects=true
+version=1
+
+oject xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>teste</groupId>
+	<artifactId>api.interzoid.com</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>api.interzoid.com</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<encoding>UTF-8</encoding>
+					<source>1.9</source>
+					<target>1.9</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.github.bonigarcia</groupId>
+			<artifactId>webdrivermanager</artifactId>
+			<version>3.0.0</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>3.14.0</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+</project>
+
+
+@Test
+	public void GetWeatherDetails()
+	{
+		
+		RestAssured.baseURI = "https://api.interzoid.com/getweather?&city=RoundRock&state=TX";
+		System.out.println("Response Body is =>  " + response.asString());
+	}
+
+ @Test
+ public void GetWeatherDetails()
+ {
+ // Specify the base URL to the RESTful web service
+ RestAssured.baseURI = "https://api.interzoid.com/getweather"; 
+ 
+ RequestSpecification httpRequest = RestAssured.given();
+
+ Response response = httpRequest.get("/city");
+   System.out.println("Response Body is =>  " + response.asString());
+ }
+
+@Test
+ public void GetWeatherDetails()
+ {
+ RestAssured.baseURI = "https://api.interzoid.com/getweather";
+ RequestSpecification httpRequest = RestAssured.given();
+ Response response = httpRequest.get("/city"); 
+
+ int statusCode = response.getStatusCode(); 
+
+ Assert.assertEquals(statusCode /*actual value*/, 400 /*expected value*/, "Correct status code returned");
+ }
+ 	int statusCode = response.getStatusCode();
+
+
+Assert.assertEquals(statusCode /*actual value*/, 400 /*expected value*/, "Correct status code returned");
+
+@Test
+public void GetWeatherDetailsInvalidCity()
+{
+ RestAssured.baseURI = "https://api.interzoid.com/getweather";
+ RequestSpecification httpRequest = RestAssured.given();
+ Response response = httpRequest.get("/state");
+ int statusCode = response.getStatusCode();
+ Assert.assertEquals(statusCode /*actual value*/, 400 /*expected value*/, "Correct status code returned");
+}
+
+	int statusCode = response.getStatusCode();
+	
+
+
+@Test
+public void GetWeatherDetailsInvalidCity()
+
+}
+
+Assert.assertEquals(statusCode /*actual value*/, 400 /*expected value*/, "Correct status code returned");
+
+
+@Test
+public void GetWeatherStatusLine()
+{
+ RestAssured.baseURI = "https://api.interzoid.com/getweather";
+ RequestSpecification httpRequest = RestAssured.given();
+ Response response = httpRequest.get("/city");
+ 
+ 
+ String statusLine = response.getStatusLine();
+ Assert.assertEquals(statusLine /*actual value*/, "HTTP/1.1 200 OK" /*expected value*/, "Incorrect status code returned");
+}
+
+@Before
+	public void SetupTest() {
+		WebDriverManager.chromedriver().setup();
+		this.driver = new ChromeDriver();
+		this.driver.get("https://api.interzoid.com/getweather"
+				+ "pf?next=https%3A%2F%2Fwwwinterzoid.com/%2F");
+		this.register = new RegisterTask(driver);
+
+	}
+
+
+/*	@Test
+	public void enterRegisterWebsite() {
+		this.register.openLoginAndRegistrationMenu();
+		this.register.startNewRegistration();
+	}*/
+
+	@Test
+	public void testMain() {
+		}
+
+
+	@After
+	public void tearDown() {
+		//driver.quit();
+	}
+}
